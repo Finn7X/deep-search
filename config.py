@@ -1,6 +1,7 @@
 import os
 from dataclasses import dataclass
 from typing import Optional
+from dotenv import load_dotenv
 
 @dataclass
 class Config:
@@ -12,13 +13,26 @@ class Config:
     max_conversation_history: int = 20
 
 def load_config() -> Config:
-    """Load configuration from environment variables or defaults"""
+    """Load configuration from environment variables"""
+    
+    # Load environment variables from .env file
+    load_dotenv()
     
     # Tavily API key (required)
-    tavily_key = os.getenv("TAVILY_API_KEY", "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")
+    tavily_key = os.getenv("TAVILY_API_KEY")
+    if not tavily_key:
+        raise ValueError(
+            "TAVILY_API_KEY not found in environment variables. "
+            "Please copy .env.example to .env and fill in your API keys."
+        )
     
-    # DeepSeek API key (will be prompted if not found)
-    deepseek_key = os.getenv("DEEPSEEK_API_KEY", "sk-dfe52d327a2b4cce839a1ffde2c243cc")
+    # DeepSeek API key (required)
+    deepseek_key = os.getenv("DEEPSEEK_API_KEY")
+    if not deepseek_key:
+        raise ValueError(
+            "DEEPSEEK_API_KEY not found in environment variables. "
+            "Please copy .env.example to .env and fill in your API keys."
+        )
     
     return Config(
         tavily_api_key=tavily_key,

@@ -19,19 +19,36 @@
 
 ## 🛠️ 安装和使用
 
-### 1. 安装依赖
+### 1. 克隆仓库
+```bash
+git clone https://github.com/Finn7X/deep-search.git
+cd deep-search
+```
+
+### 2. 安装依赖
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. 运行应用
+### 3. 配置API密钥
+```bash
+# 复制环境变量模板
+cp .env.example .env
+
+# 编辑 .env 文件，填入您的API密钥
+nano .env  # 或使用其他编辑器
+```
+
+在 `.env` 文件中填入您的API密钥：
+```bash
+TAVILY_API_KEY=your_tavily_api_key_here
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
+```
+
+### 4. 运行应用
 ```bash
 python main.py
 ```
-
-### 3. 首次运行
-- 系统已预配置Tavily API Key
-- 需要输入您的DeepSeek API Key（首次运行时会提示）
 
 ## 📋 使用示例
 
@@ -70,16 +87,30 @@ GPT-4相比GPT-3的改进如何影响AI应用的发展趋势
 
 ## 🔧 配置说明
 
-### API Keys
-- **Tavily API**: 已预配置 
-- **DeepSeek API**: 需要用户提供
+### 获取API密钥
 
-### 环境变量（可选）
+#### Tavily API Key
+1. 访问 [Tavily官网](https://tavily.com)
+2. 注册账户并获取API Key
+3. 将key填入 `.env` 文件中的 `TAVILY_API_KEY`
+
+#### DeepSeek API Key  
+1. 访问 [DeepSeek平台](https://platform.deepseek.com)
+2. 注册账户并获取API Key
+3. 将key填入 `.env` 文件中的 `DEEPSEEK_API_KEY`
+
+### 环境变量配置
+所有配置都通过 `.env` 文件管理：
 ```bash
-export TAVILY_API_KEY="your_tavily_key"
-export DEEPSEEK_API_KEY="your_deepseek_key"
-export DEEPSEEK_MODEL="deepseek-chat"
-export MAX_SEARCH_RESULTS="10"
+# 必需的API密钥
+TAVILY_API_KEY=your_tavily_key_here
+DEEPSEEK_API_KEY=your_deepseek_key_here
+
+# 可选配置
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+DEEPSEEK_MODEL=deepseek-chat
+MAX_SEARCH_RESULTS=10
+MAX_CONVERSATION_HISTORY=20
 ```
 
 ## 📊 系统架构

@@ -69,13 +69,17 @@ Deep Search 2.0 is an advanced Python application that implements true deep sear
 
 ### Configuration
 
-The application uses the following configuration:
-- Tavily API key: `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`
-- DeepSeek API key: `sk-dfe52d327a2b4cce839a1ffde2c243cc`
+The application loads configuration from environment variables:
+- API keys are stored securely in `.env` file (not committed to git)
 - DeepSeek model: `deepseek-chat`
 - Max search results: 10-15 (dynamically adjusted)
 - ReAct max rounds: 5
 - Quality threshold: 0.6
+
+**Setup Instructions:**
+1. Copy `.env.example` to `.env`
+2. Fill in your actual API keys in the `.env` file
+3. Never commit the `.env` file to version control
 
 ### CLI Commands
 
