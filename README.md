@@ -113,15 +113,56 @@ MAX_SEARCH_RESULTS=10
 MAX_CONVERSATION_HISTORY=20
 ```
 
+## 📁 项目结构
+
+```
+deep-search/
+├── src/                    # 源代码目录
+│   ├── __init__.py
+│   ├── core/              # 核心模块
+│   │   ├── __init__.py
+│   │   ├── config.py      # 配置管理
+│   │   ├── engine.py      # 深度搜索引擎
+│   │   └── workflow.py    # 搜索工作流
+│   ├── agents/            # 智能代理
+│   │   ├── __init__.py
+│   │   ├── query_analyzer.py  # 查询分析器
+│   │   └── react_agent.py     # ReAct代理框架
+│   ├── search/            # 搜索相关
+│   │   ├── __init__.py
+│   │   ├── planner.py     # 搜索规划器
+│   │   └── tavily_search.py   # Tavily搜索客户端
+│   └── clients/           # 外部API客户端
+│       ├── __init__.py
+│       └── deepseek_client.py # DeepSeek API客户端
+├── tests/                 # 测试文件
+│   ├── __init__.py
+│   ├── test_search.py     # 搜索功能测试
+│   └── quick_test.py      # 快速测试
+├── docs/                  # 文档目录
+│   └── Deep-RAG-Implementation-Plan.md
+├── main.py               # 应用程序入口点
+├── requirements.txt      # Python依赖包
+├── CLAUDE.md            # 项目开发指南
+└── README.md            # 项目说明文档
+```
+
 ## 📊 系统架构
 
 ### 核心组件
-1. **QueryAnalyzer** - 查询分析和改写
-2. **SearchPlanner** - 动态搜索策略规划
-3. **ReActAgent** - 推理-行动循环框架
-4. **DeepSearchEngine** - 核心搜索引擎
-5. **TavilySearcher** - 增强搜索客户端
-6. **DeepSeekClient** - AI推理客户端
+1. **src/core/engine.py** - DeepSearchEngine核心搜索引擎
+2. **src/agents/query_analyzer.py** - QueryAnalyzer查询分析和改写
+3. **src/search/planner.py** - SearchPlanner动态搜索策略规划
+4. **src/agents/react_agent.py** - ReActAgent推理-行动循环框架
+5. **src/search/tavily_search.py** - TavilySearcher增强搜索客户端
+6. **src/clients/deepseek_client.py** - DeepSeekClient AI推理客户端
+7. **src/core/config.py** - 配置管理和环境变量处理
+
+### 模块职责
+- **core/** - 核心功能模块，包含主要的搜索引擎和配置
+- **agents/** - 智能代理模块，负责查询分析和ReAct推理
+- **search/** - 搜索相关模块，包含搜索规划和执行
+- **clients/** - 外部服务客户端，处理API通信
 
 ### 工作流程
 1. 🧠 **查询分析** - 识别复杂度，提取概念，生成变体
