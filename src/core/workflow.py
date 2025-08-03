@@ -6,9 +6,9 @@ from rich.panel import Panel
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 
-from config import Config
-from tavily_search import TavilySearcher
-from deepseek_client import DeepSeekClient
+from .config import Config
+from ..search.tavily_search import TavilySearcher
+from ..clients.deepseek_client import DeepSeekClient
 
 console = Console()
 

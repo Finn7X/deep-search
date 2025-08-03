@@ -12,12 +12,12 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TimeEl
 from rich.table import Table
 from rich.live import Live
 
-from config import Config
-from tavily_search import TavilySearcher
-from deepseek_client import DeepSeekClient
-from query_analyzer import QueryAnalyzer, QueryAnalysis
-from search_planner import SearchPlanner, SearchPlan
-from react_agent import ReActAgent
+from .config import Config
+from ..search.tavily_search import TavilySearcher
+from ..clients.deepseek_client import DeepSeekClient
+from ..agents.query_analyzer import QueryAnalyzer, QueryAnalysis
+from ..search.planner import SearchPlanner, SearchPlan
+from ..agents.react_agent import ReActAgent
 
 console = Console()
 

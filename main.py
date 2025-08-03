@@ -19,8 +19,8 @@ from rich.prompt import Prompt, Confirm
 from rich.text import Text
 from rich.table import Table
 
-from config import Config, load_config
-from deep_search_engine import DeepSearchEngine
+from src.core.config import Config, load_config
+from src.core.engine import DeepSearchEngine
 
 console = Console()
 
